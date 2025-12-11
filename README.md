@@ -1,5 +1,5 @@
 # **Coffee Shop Sales Report in Power BI**
-![Screenshot_1](https://github.com/tirthvyas95/Coffee_Shop_Sales_Report_Power_BI/blob/a577c418fb17445446c6e9a0beffc9a8b9c013e3/Screenshots/SS_1.png)
+![Screenshot_1](https://github.com/tirthvyas95/Coffee_Shop_Sales_Report_Power_BI/blob/c9347f72c60bf7dfd9f5ad928259110957e1b65f/Screenshots/SS_1.png)
 ## Introduction
 
 This a Sample report I made to learn Power BI processes and features using a walktrough published on a Youtube Channel called [Data Tutorials](https://www.youtube.com/@datatutorials1). In this report aims to visualize the per day and per hour sales patterns that occur in multiple coffee shops in New York. The data set used is also available and you can follow the same [Walkthrough](https://www.youtube.com/watch?v=_JwAryp3STM) to recreate the report in Power BI desktop. Power BI Desktop is available free of cost on the [Microsoft Power BI Download Page](https://www.microsoft.com/en-us/download/details.aspx?id=58494) although you must purchase Microsoft Fabric License or other payed plans to pubish the report and utilize other advanced features available on the [Microsoft Fabric Platform](https://www.microsoft.com/en-us/microsoft-fabric). Following is the Metadata of the dataset and the list of measures used to realize the visualization along with the features like interations between visuals that enable you to sort and filter through all the visuals enabling stakeholders to explore how to store are performing. In this report an emphasis was made on the custom tooltip function which allows report authors to make a custom tooltip which can be used instead of the standard to create another layer of immersion.
@@ -104,5 +104,22 @@ MoM Growth & Diff Orders =
         _sign_trend & " " & _sign & FORMAT(mom, "#0.0%") & " | " & _sign & FORMAT(month_diff/1000, "0.0K") & " " & "vs LM"
 ```
 
+## Features and Interactions
+### Filtering by Date
+![Screenshot_1](https://github.com/tirthvyas95/Coffee_Shop_Sales_Report_Power_BI/blob/c9347f72c60bf7dfd9f5ad928259110957e1b65f/Screenshots/SS_2.png)
+### Custom Tool Tip for Calender Chart
+![Screenshot_1](https://github.com/tirthvyas95/Coffee_Shop_Sales_Report_Power_BI/blob/c9347f72c60bf7dfd9f5ad928259110957e1b65f/Screenshots/SS_3.png)
+### Filtering by Weekdays and Weekends
+![Screenshot_1](https://github.com/tirthvyas95/Coffee_Shop_Sales_Report_Power_BI/blob/c9347f72c60bf7dfd9f5ad928259110957e1b65f/Screenshots/SS_4.png)
+### Filtering by Store Location
+![Screenshot_1](https://github.com/tirthvyas95/Coffee_Shop_Sales_Report_Power_BI/blob/c9347f72c60bf7dfd9f5ad928259110957e1b65f/Screenshots/SS_5.png)
+### Filering by Product Category
+![Screenshot_1](https://github.com/tirthvyas95/Coffee_Shop_Sales_Report_Power_BI/blob/c9347f72c60bf7dfd9f5ad928259110957e1b65f/Screenshots/SS_6.png)
+The same type of filtering is available with 'Sales by Product' visual as well
+### Custom Tool Tip for Day and Hour Chart
+![Screenshot_1](https://github.com/tirthvyas95/Coffee_Shop_Sales_Report_Power_BI/blob/9ccf40ad438d8acdb0a653a0e73bb1ae4abd360e/Screenshots/SS_7.png)
 
+## References
+-Data Tutorials, Data Tutorials's Youtube Channel. Retrieved Decmeber 11, 2021, from https://www.youtube.com/@datatutorials1
+-Microsoft Learn, Microsoft Learn's Data Analyst Career Path. Retrieved Decmeber 11, 2021, from https://learn.microsoft.com/en-us/training/career-paths/data-analyst
 
