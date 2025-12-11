@@ -6,9 +6,103 @@ This a Sample report I made to learn Power BI processes and features using a wal
 
 ## Metadata
 
+### Transactions Table
 1. transaction_id = Unique ID of each transaction
 2. transaction_date = Date when the transaction was made(i.e: Customer paid the bill)
 3. transaction_time = Time when the transaction was recorded
 4. transaction_qty = Number of Items in the transaction
 5. store_id = Unique ID of multiple store situated throughout the city of New York
-6. 
+6. store_location = The location name of the store
+7. product_id = Unique ID of products
+8. unit_price = Unit price of the product
+9. product_category = The category in which the product belongs to
+10. product_type = Type of product
+11. product_detail = Additional details of product
+
+### Date Table
+1. Date = The date
+2. Day Name = Name of the day
+3. Day Number = Day number of the week(1-7)
+4. Month = Month of the year
+5. Month Number = Monther number of the year(1-12)
+
+## Measures
+1. Total Sales = Number of transactions/Invoices/Customers
+```
+Total Sales = SUM(Transactions[Sales])
+```
+2. Total Quantity Sold = Total quantity sold
+```
+Total Quantity Sold = SUM(Transactions[transaction_qty])
+```
+3. Total Orders = Number of distinct transactions
+```
+Total Orders = DISTINCTCOUNT(Transactions[transaction_id])
+```
+4. PM Sales = Previous Month sales, made using DATEADD() function
+```
+PM Sales = CALCULATE([CM Sales], DATEADD('Date Table'[Date], -1, MONTH))
+```
+5. PM Quantity = Previous Month Quantity Sold
+```
+PM Quantity = CALCULATE([CM Quantity], DATEADD('Date Table'[Date], -1, MONTH))
+```
+6. PM Orders = Previous Month amount of orders
+```
+PM Orders = CALCULATE([CM Orders], DATEADD('Date Table'[Date], -1, MONTH))
+```
+7. CM Sales = Current month sales
+```
+CM Sales = VAR selected_month = SELECTEDVALUE('Date Table'[Month])
+            RETURN
+            TOTALMTD(CALCULATE([Total Sales], 'Date Table'[Month] = selected_month), 'Date Table'[Date])
+```
+8. CM Quantity = Current month quantity
+```
+CM Quantity = VAR selected_month = SELECTEDVALUE('Date Table'[Month])
+            RETURN
+            TOTALMTD(CALCULATE([Total Quantity Sold], 'Date Table'[Month] = selected_month), 'Date Table'[Date])
+```
+9. CM Orders = Current month Orders, made using the TOTALMTD() function
+```
+CM Orders = VAR selected_month = SELECTEDVALUE('Date Table'[Month])
+            RETURN
+            TOTALMTD(CALCULATE([Total Orders], 'Date Table'[Month] = selected_month), 'Date Table'[Date])
+```
+10. Daily Avg Sales = Daily average sales
+```
+Daily Avg Sales = AVERAGEX(ALLSELECTED(Transactions[transaction_date]), [Total Sales])
+```
+11. MoM Growth & Diff Sales = To calculate the month on month Growth KPI of total sales
+```
+MoM Growth & Diff Sales = 
+    VAR month_diff = [CM Sales] - [PM Sales]
+    VAR mom = ([CM Sales] - [PM Sales]) / [PM Sales]
+    VAR _sign = IF(month_diff > 0, "+", "")
+    VAR _sign_trend = IF(month_diff > 0, "▲", "▼")
+    RETURN
+        _sign_trend & " " & _sign & FORMAT(mom, "#0.0%") & " | " & _sign & FORMAT(month_diff/1000, "0.0K") & " " & "vs LM"
+```
+12. MoM Growth & Diff Quantity = To calculate the month on month Growth KPI of quantity sold
+```
+MoM Growth & Diff Quantity = 
+    VAR month_diff = [CM Quantity] - [PM Quantity]
+    VAR mom = ([CM Quantity] - [PM Quantity]) / [PM Quantity]
+    VAR _sign = IF(month_diff > 0, "+", "")
+    VAR _sign_trend = IF(month_diff > 0, "▲", "▼")
+    RETURN
+        _sign_trend & " " & _sign & FORMAT(mom, "#0.0%") & " | " & _sign & FORMAT(month_diff/1000, "0.0K") & " " & "vs LM"
+```
+13. MoM Growth & Diff Orders = To calculate the month on month growth KPI of Orders, made using DAX Variables, IF() in DAX and FORMAT() function
+```
+MoM Growth & Diff Orders = 
+    VAR month_diff = [CM Orders] - [PM Orders]
+    VAR mom = ([CM Orders] - [PM Orders]) / [PM Orders]
+    VAR _sign = IF(month_diff > 0, "+", "")
+    VAR _sign_trend = IF(month_diff > 0, "▲", "▼")
+    RETURN
+        _sign_trend & " " & _sign & FORMAT(mom, "#0.0%") & " | " & _sign & FORMAT(month_diff/1000, "0.0K") & " " & "vs LM"
+```
+
+
+
