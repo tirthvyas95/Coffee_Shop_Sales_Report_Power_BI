@@ -120,6 +120,6 @@ The same type of filtering is available with 'Sales by Product' visual as well
 ![Screenshot_1](https://github.com/tirthvyas95/Coffee_Shop_Sales_Report_Power_BI/blob/9ccf40ad438d8acdb0a653a0e73bb1ae4abd360e/Screenshots/SS_7.png)
 
 ## References
-- Data Tutorials, Data Tutorials's Youtube Channel. Retrieved Decmeber 11, 2021, from https://www.youtube.com/@datatutorials1
-- Microsoft Learn, Microsoft Learn's Data Analyst Career Path. Retrieved Decmeber 11, 2021, from https://learn.microsoft.com/en-us/training/career-paths/data-analyst
+- Data Tutorials, Data Tutorials's Youtube Channel. Retrieved December 11, 2025, from https://www.youtube.com/@datatutorials1
+- Microsoft Learn, Microsoft Learn's Data Analyst Career Path. Retrieved December 11, 2025, from https://learn.microsoft.com/en-us/training/career-paths/data-analyst
 
